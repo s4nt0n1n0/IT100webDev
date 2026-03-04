@@ -304,8 +304,8 @@ function initMap() {
     const mapContainer = document.getElementById('map');
     if (!mapContainer) return;
 
-    // Daet, Camarines Norte coordinates
-    const daetCoords = [14.1128, 122.9553];
+    // Barangay VI, Daet, Camarines Norte coordinates
+    const daetCoords = [14.1194, 122.9571];
 
     // Initialize map
     const map = L.map('map').setView(daetCoords, 13);
@@ -317,7 +317,7 @@ function initMap() {
 
     // Add Marker
     L.marker(daetCoords).addTo(map)
-        .bindPopup('<b>My Location</b><br>Daet, Camarines Norte, Philippines')
+        .bindPopup('<b>My Location</b><br>L. Madi Street, Barangay VI (Barangay 6), Daet, Camarines Norte')
         .openPopup();
 }
 
