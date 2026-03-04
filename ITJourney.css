@@ -136,6 +136,16 @@ h1 {
     text-align: center;
 }
 
+.skill-description {
+    font-size: 14px;
+    color: #777;
+    margin-top: 12px;
+    font-style: italic;
+    line-height: 1.6;
+    padding-top: 10px;
+    border-top: 1px solid rgba(233, 30, 99, 0.1);
+}
+
 /* Clickable project indicator */
 .project-item[data-link] {
     cursor: pointer;

@@ -157,18 +157,25 @@ async function fetchGitHubRepos() {
         const response = await fetch('https://api.github.com/users/s4nt0n1n0/repos?sort=updated&per_page=10');
         let repos = await response.json();
 
-        // Filter out trialworkIM (case-insensitive)
-        repos = repos.filter(repo => repo.name.toLowerCase() !== 'trialworkim');
+        // Filter out trialworkIM and APPDEV11 (case-insensitive)
+        repos = repos.filter(repo =>
+            repo.name.toLowerCase() !== 'trialworkim' &&
+            repo.name.toLowerCase() !== 'appdev11'
+        );
 
-        // Check if Sam-AppDev is in the list
-        const samAppDevIndex = repos.findIndex(repo => repo.name === 'Sam-AppDev');
+        // Check if IT100webDev or Sam-AppDev is in the list
+        const prioritizedRepoIndex = repos.findIndex(repo =>
+            repo.name === 'IT100webDev' || repo.name === 'Sam-AppDev'
+        );
 
-        if (samAppDevIndex !== -1) {
-            const samAppDev = repos.splice(samAppDevIndex, 1)[0];
-            // Update description and move to front
-            samAppDev.showCustomDesc = true;
-            samAppDev.customDescription = "Lost and Found - A mobile application project for reporting and recovering lost items.";
-            repos.unshift(samAppDev);
+        if (prioritizedRepoIndex !== -1) {
+            const prioritizedRepo = repos.splice(prioritizedRepoIndex, 1)[0];
+            // Update description if it's Sam-AppDev (keeping existing logic)
+            if (prioritizedRepo.name === 'Sam-AppDev') {
+                prioritizedRepo.showCustomDesc = true;
+                prioritizedRepo.customDescription = "Lost and Found - A mobile application project for reporting and recovering lost items.";
+            }
+            repos.unshift(prioritizedRepo);
         }
 
         // Take top 3 for display
@@ -185,8 +192,7 @@ async function fetchGitHubRepos() {
                     </div>
                     <p class="project-description">${description}</p>
                     <div class="project-tech">
-                        <strong>Language:</strong> ${repo.language || 'Multiple'} | 
-                        <strong>Stars:</strong> ${repo.stargazers_count}
+                        <strong>Language:</strong> ${repo.language || 'Multiple'}
                     </div>
                     <a href="${repo.html_url}" target="_blank" class="repo-link">View Repository →</a>
                 </div>
