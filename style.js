@@ -163,6 +163,20 @@ async function fetchGitHubRepos() {
             repo.name.toLowerCase() !== 'appdev11'
         );
 
+        // Add custom descriptions for specific repositories
+        repos.forEach(repo => {
+            if (repo.name === 'IT100webDev') {
+                repo.showCustomDesc = true;
+                repo.customDescription = "A modern and responsive website for Tabeya, featuring an elegant design and user-friendly interface.";
+            } else if (repo.name === 'FINALS-IM') {
+                repo.showCustomDesc = true;
+                repo.customDescription = "A comprehensive restaurant management system for Tabeya, handling orders and inventory.";
+            } else if (repo.name === 'Lost-Found_Application08.') {
+                repo.showCustomDesc = true;
+                repo.customDescription = "A mobile application designed to help report and track lost items within the school campus.";
+            }
+        });
+
         // Check if IT100webDev or Sam-AppDev is in the list
         const prioritizedRepoIndex = repos.findIndex(repo =>
             repo.name === 'IT100webDev' || repo.name === 'Sam-AppDev'
@@ -170,7 +184,7 @@ async function fetchGitHubRepos() {
 
         if (prioritizedRepoIndex !== -1) {
             const prioritizedRepo = repos.splice(prioritizedRepoIndex, 1)[0];
-            // Update description if it's Sam-AppDev (keeping existing logic)
+            // Update description for Sam-AppDev (keeping existing logic)
             if (prioritizedRepo.name === 'Sam-AppDev') {
                 prioritizedRepo.showCustomDesc = true;
                 prioritizedRepo.customDescription = "Lost and Found - A mobile application project for reporting and recovering lost items.";
