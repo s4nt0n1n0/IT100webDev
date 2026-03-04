@@ -167,10 +167,10 @@ async function fetchGitHubRepos() {
         repos.forEach(repo => {
             if (repo.name === 'IT100webDev') {
                 repo.showCustomDesc = true;
-                repo.customDescription = "A modern and responsive website for Tabeya, featuring an elegant design and user-friendly interface.";
+                repo.customDescription = "A responsive custom website showcasing frontend design skills, featuring smooth animations and dynamic data fetching.";
             } else if (repo.name === 'FINALS-IM') {
                 repo.showCustomDesc = true;
-                repo.customDescription = "A comprehensive restaurant management system for Tabeya, handling orders and inventory.";
+                repo.customDescription = "A comprehensive restaurant management system built to handle orders, inventory tracking, and sales reporting efficiently.";
             } else if (repo.name === 'Lost-Found_Application08.') {
                 repo.showCustomDesc = true;
                 repo.customDescription = "A mobile application designed to help report and track lost items within the school campus.";
